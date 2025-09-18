@@ -38,9 +38,9 @@ public class PropertyRepository : IPropertyService
 
         foreach (var property in properties)
         {
-            var imgs = await _context.PropertyImgs
+            var img = await _context.PropertyImgs
                 .Find(img => img.PropertyId == property.Id)
-                .ToListAsync();
+                .FirstOrDefaultAsync();
 
             var owner = await _context.Owners
                 .Find(o => o.Id == property.OwnerId)
@@ -81,7 +81,7 @@ public class PropertyRepository : IPropertyService
                 Name = property.Name,
                 Address = property.Address,
                 Price = property.Price,
-                Images = imgs.Select(i => i.File).ToList(),
+                Images = img != null ? new List<string> { img.File } : new List<string>(),
                 Traces = traceDtos
             });
         }

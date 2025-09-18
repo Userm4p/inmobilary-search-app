@@ -8,7 +8,7 @@ obj/
 [Dd]ebug/
 [Rr]elease/
 [Tt]estResults/
-
+.vs
 # -------------------------------
 # Configuración de usuario
 # -------------------------------

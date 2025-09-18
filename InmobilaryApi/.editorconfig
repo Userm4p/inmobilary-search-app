@@ -1,0 +1,14 @@
+# Indica que es para C#
+[*.cs]
+
+# Usings no usados → warning
+dotnet_diagnostic.IDE0005.severity = warning
+
+# Preferencias de imports
+dotnet_sort_system_directives_first = true
+dotnet_separate_import_directive_groups = true
+
+# Mostrar advertencias de estilo
+dotnet_analyzer_diagnostic.category-Style.severity = warning
+dotnet_analyzer_diagnostic.category-Usage.severity = warning
+dotnet_analyzer_diagnostic.category-Security.severity = warning

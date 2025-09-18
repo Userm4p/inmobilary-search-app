@@ -1,0 +1,32 @@
+version: "3.9"
+services:
+  api:
+    build:
+      context: ./InmobilaryApi
+      dockerfile: Dockerfile
+    ports:
+      - "5000:8080"
+    env_file:
+      - .env
+    environment:
+      MongoSettings__ConnectionString: ${MONGO_CONNECTION_STRING}
+      MongoSettings__DatabaseName: ${MONGO_INITDB_DATABASE}
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:6
+    container_name: inmobilary_mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: ${MONGO_INITDB_DATABASE}
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+    volumes:
+      - ./InmobilaryApi/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+
+
+volumes:
+  mongo_data:

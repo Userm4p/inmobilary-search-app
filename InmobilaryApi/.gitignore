@@ -1,0 +1,56 @@
+# -------------------------------
+# Archivos de compilación de .NET
+# -------------------------------
+bin/
+obj/
+[Bb]uild/
+[Ll]og/
+[Dd]ebug/
+[Rr]elease/
+[Tt]estResults/
+
+# -------------------------------
+# Configuración de usuario
+# -------------------------------
+*.user
+*.rsuser
+*.suo
+*.userosscache
+*.sln.docstates
+
+# -------------------------------
+# Archivos de dependencias
+# -------------------------------
+*.nuget/
+*.nupkg
+*.snupkg
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# -------------------------------
+# Archivos de IDE
+# -------------------------------
+.vscode/
+.idea/
+*.swp
+
+# -------------------------------
+# Docker
+# -------------------------------
+docker-compose.override.yml
+.docker/
+*.pid
+
+# -------------------------------
+# Secretos / Entorno
+# -------------------------------
+.env
+.env.*
+!.env.example
+
+# -------------------------------
+# Otros
+# -------------------------------
+*.DS_Store
+Thumbs.db

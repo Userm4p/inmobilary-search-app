@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`InformationCard should render property information 1`] = `
+<div>
+  <div
+    class="flex flex-col gap-4 p-6 justify-start items-start bg-stone-800 shadow-md w-full md:w-[604px] sm:w-[504px] xs:w-[360px] xxs:w-[350px] w-[300px] h-auto rounded-lg"
+  >
+    <div
+      class="w-full"
+    >
+      <h1
+        class="text-3xl font-bold text-white text-nowrap"
+      >
+        Price: 
+        $100,000
+      </h1>
+      <hr
+        class="my-3 border-gray-200"
+      />
+      <p
+        class="text-md text-gray-100 mb-2"
+      >
+        123 Test St
+      </p>
+      <div
+        class="flex flex-row gap-4"
+      >
+        <span
+          class="text-md font-semibold text-gray-200"
+        >
+          Owner: 
+          John Doe
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;

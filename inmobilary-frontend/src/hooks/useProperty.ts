@@ -4,7 +4,7 @@ import { IPropertyContext, Property } from '@/types/Property.types';
 import { useCallback, useMemo, useState } from 'react';
 
 export const useProperty = (id: string): IPropertyContext => {
-  const [property, setProperty] = useState<Property>();
+  const [property, setProperty] = useState<Property | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -25,7 +25,7 @@ export const useProperty = (id: string): IPropertyContext => {
 
   return {
     getProperty,
-    property: property!,
+    property,
     isLoading,
     error,
   };

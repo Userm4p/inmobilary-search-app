@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`PropertyContextLayout should render children wrapped in PropertyContext provider 1`] = `
+<div>
+  <div
+    data-testid="test-child"
+  >
+    Test Child
+  </div>
+</div>
+`;

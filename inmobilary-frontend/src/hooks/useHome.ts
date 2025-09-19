@@ -38,7 +38,7 @@ export const useHome = (): IHomeContext => {
       const data = await propertyService.getAllProperties(searchFilters);
       setProperties(data);
       setError(null);
-    } catch (error) {
+    } catch {
       setError('Failed to fetch properties');
     } finally {
       setIsLoading(false);

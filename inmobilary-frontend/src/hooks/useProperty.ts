@@ -1,7 +1,7 @@
 import { instance } from '@/api/axios';
 import { PropertyService } from '@/api/helpers/property.service';
 import { IPropertyContext, Property } from '@/types/Property.types';
-import React, { useCallback, useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 
 export const useProperty = (id: string): IPropertyContext => {
   const [property, setProperty] = useState<Property>();
@@ -16,12 +16,12 @@ export const useProperty = (id: string): IPropertyContext => {
       const data = await propertyService.getPropertyById(id);
       setProperty(data);
       setError(null);
-    } catch (error) {
-      setError('Failed to fetch properties');
+    } catch {
+      setError('Failed to fetch property');
     } finally {
       setIsLoading(false);
     }
-  }, [propertyService]);
+  }, [propertyService, id]);
 
   return {
     getProperty,

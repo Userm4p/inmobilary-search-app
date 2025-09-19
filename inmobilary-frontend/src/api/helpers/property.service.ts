@@ -11,16 +11,25 @@ export class PropertyService {
   }
 
   getAllProperties = async (searchFilters: SearchFilters) => {
-    const filteredParams = Object.fromEntries(
-      Object.entries(searchFilters).filter(([_, value]) => value !== undefined && value !== '')
-    );
+    try {
+      const filteredParams = Object.fromEntries(
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        Object.entries(searchFilters).filter(([_, value]) => value !== undefined && value !== '')
+      );
 
-    const response = await this.instance.get<Property[]>(path, { params: filteredParams });
-    return response.data;
+      const response = await this.instance.get<Property[]>(path, { params: filteredParams });
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
   };
 
   getPropertyById = async (id: string) => {
-    const response = await this.instance.get<Property>(path + '/' + id);
-    return response.data;
+    try {
+      const response = await this.instance.get<Property>(path + '/' + id);
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
   };
 }

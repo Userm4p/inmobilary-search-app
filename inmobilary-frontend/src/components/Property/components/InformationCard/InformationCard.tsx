@@ -14,7 +14,9 @@ export const InformationCard = () => {
         <hr className="my-3 border-gray-200" />
         <p className="text-md text-gray-100 mb-2">{property?.address}</p>
         <div className="flex flex-row gap-4">
-          <span className="text-md font-semibold text-gray-200">Owner: {property?.owner.name}</span>
+          <span className="text-md font-semibold text-gray-200">
+            Owner: {property?.owner?.name}
+          </span>
         </div>
       </div>
 

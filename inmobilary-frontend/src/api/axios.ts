@@ -7,5 +7,4 @@ export const instance = axios.create({
   },
   timeout: 10000,
   withCredentials: true,
-  validateStatus: status => status >= 200 && status < 500,
 });

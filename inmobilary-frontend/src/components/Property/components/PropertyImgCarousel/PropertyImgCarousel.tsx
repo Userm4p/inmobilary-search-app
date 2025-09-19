@@ -16,7 +16,7 @@ export const PropertyImgCarousel = () => {
     <div className="lg:w-[700px] md:w-[700px] sm:w-[600px] xs:w-[450px] xxs:w-[350px] w-[300px] px-12">
       <Carousel className="w-full rounded-none">
         <CarouselContent>
-          {property?.images.map((img, index) => (
+          {property?.images?.map((img, index) => (
             <CarouselItem key={index}>
               <LazyImage
                 src={img}

@@ -57,6 +57,7 @@ export default function LazyImage({
       <div style={{ width: '100%', paddingBottom: `${paddingBottom}%` }} />
 
       {isVisible && (
+        // eslint-disable-next-line @next/next/no-img-element
         <img
           src={src}
           alt={alt}

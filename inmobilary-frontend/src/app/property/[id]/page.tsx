@@ -1,7 +1,8 @@
+'use client';
 import Property from '@/components/Property/Property';
 import React from 'react';
 
-const page = () => {
+const Page = () => {
   return (
     <>
       <Property />
@@ -9,4 +10,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

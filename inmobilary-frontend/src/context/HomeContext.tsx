@@ -7,7 +7,9 @@ const homeContextInitialValues: IHomeContext = {
   error: null,
   properties: [],
   getProperties: async () => {},
-  handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => {},
+  handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+  },
   searchFilters: {},
 };
 

@@ -107,8 +107,8 @@ export const instance = axios.create({
 - Property service (`src/api/helpers/property.service.ts`):
 
 ```ts
-getAllProperties(searchFilters)
-getPropertyById(id)
+getAllProperties(searchFilters);
+getPropertyById(id);
 ```
 
 Filters are sent as `params`, removing `undefined` values and empty strings.
@@ -166,5 +166,3 @@ pnpm start
 ### Notes
 
 - This frontend expects a running backend (see `InmobilaryApi/`). If you use the root `docker-compose.yml`, make sure `NEXT_PUBLIC_BACKEND_URL` matches the published API port.
-
-

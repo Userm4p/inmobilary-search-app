@@ -4,20 +4,24 @@ import { Header } from './components/Header/Header';
 import { PropertyContext } from '@/context/PropertyContext';
 import { PropertyImgCarousel } from './components/PropertyImgCarousel/PropertyImgCarousel';
 import { InformationCard } from './components/InformationCard/InformationCard';
-import { Loader } from 'lucide-react';
+import Loader from '../Loader/Loader';
 
 const Property = () => {
-  const { getProperty, property, isLoading } = useContext(PropertyContext);
+  const { getProperty, property, isLoading, error } = useContext(PropertyContext);
 
   useEffect(() => {
     getProperty();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (isLoading) {
+    return <Loader />;
+  }
+
+  if (error) {
     return (
-      <div className="flex justify-center items-center py-4 w-full">
-        <Loader className="w-10 h-10 text-white animate-spin" />
-        <span className="ml-2 text-sm text-white">Loading</span>
+      <div className="flex flex-col justify-center items-center h-screen">
+        <h1 className="text-red-500 text-2xl font-bold">{error}</h1>
       </div>
     );
   }

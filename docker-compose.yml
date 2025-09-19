@@ -4,6 +4,7 @@ services:
     build:
       context: ./InmobilaryApi
       dockerfile: Dockerfile
+    container_name: api
     ports:
       - "5000:8080"
     env_file:
@@ -13,6 +14,15 @@ services:
       MongoSettings__DatabaseName: ${MONGO_INITDB_DATABASE}
     depends_on:
       - mongo
+  
+  frontend:
+    build: ./inmobilary-frontend
+    container_name: inmobilary_frontend
+    restart: always
+    ports:
+      - '3000:3000'
+    depends_on:
+      - api
 
   mongo:
     image: mongo:6

@@ -11,6 +11,7 @@ const homeContextInitialValues: IHomeContext = {
     e.preventDefault();
   },
   searchFilters: {},
+  handleClearFilters: () => {},
 };
 
 export const HomeContext = createContext<IHomeContext>(homeContextInitialValues);

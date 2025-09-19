@@ -7,4 +7,5 @@ export interface IHomeContext {
   getProperties: () => Promise<void>;
   handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   searchFilters: SearchFilters;
+  handleClearFilters: () => void;
 }

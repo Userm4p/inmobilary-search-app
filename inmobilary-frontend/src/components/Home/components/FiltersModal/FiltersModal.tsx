@@ -93,7 +93,7 @@ export const FiltersModal = ({ children }: Props) => {
             />
           </div>
           <DialogClose asChild disabled={isFormDisabled}>
-            <Button onClick={getProperties} className="mt-4 w-full cursor-pointer">
+            <Button onClick={() => getProperties()} className="mt-4 w-full cursor-pointer">
               Apply Filters
             </Button>
           </DialogClose>

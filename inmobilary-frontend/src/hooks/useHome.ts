@@ -11,8 +11,8 @@ export const useHome = (): IHomeContext => {
   const [error, setError] = useState<string | null>(null);
   const [searchFilters, setSearchFilters] = useState<SearchFilters>({
     address: '',
-    maxPrice: undefined,
-    minPrice: undefined,
+    maxPrice: '',
+    minPrice: '',
     name: '',
   });
 
@@ -32,18 +32,32 @@ export const useHome = (): IHomeContext => {
     });
   };
 
-  const getProperties = useCallback(async () => {
-    setIsLoading(true);
-    try {
-      const data = await propertyService.getAllProperties(searchFilters);
-      setProperties(data);
+  const getProperties = useCallback(
+    async (filter?: SearchFilters) => {
+      setIsLoading(true);
       setError(null);
-    } catch {
-      setError('Failed to fetch properties');
-    } finally {
-      setIsLoading(false);
-    }
-  }, [propertyService, searchFilters]);
+      try {
+        const data = await propertyService.getAllProperties(filter ? filter : searchFilters);
+        setProperties(data);
+        setError(null);
+      } catch {
+        setError('Failed to fetch properties');
+      } finally {
+        setIsLoading(false);
+      }
+    },
+    [propertyService, searchFilters]
+  );
+
+  const handleClearFilters = useCallback(() => {
+    setSearchFilters({
+      address: '',
+      maxPrice: undefined,
+      minPrice: undefined,
+      name: '',
+    });
+    getProperties({});
+  }, [getProperties]);
 
   return {
     isLoading,
@@ -52,5 +66,6 @@ export const useHome = (): IHomeContext => {
     getProperties,
     handleInputChange,
     searchFilters,
+    handleClearFilters,
   };
 };

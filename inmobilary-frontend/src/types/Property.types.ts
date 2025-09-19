@@ -29,8 +29,8 @@ export interface Trace {
 export interface SearchFilters {
   name?: string;
   address?: string;
-  minPrice?: number;
-  maxPrice?: number;
+  minPrice?: string;
+  maxPrice?: string;
 }
 
 export interface IPropertyContext {

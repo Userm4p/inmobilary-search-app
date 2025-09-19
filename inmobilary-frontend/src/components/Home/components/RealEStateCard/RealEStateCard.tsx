@@ -12,7 +12,7 @@ interface Props {
 
 export const RealEStateCard = ({ property }: Props) => {
   return (
-    <div className="max-w-[400px] w-full h-auto transition-transform duration-300 ease-in-out hover:scale-105 group-hover:scale-105">
+    <div className="max-w-[400px] w-full h-auto transition-transform duration-300 ease-in-out hover:scale-105 group-hover:scale-105 hover:border-4 hover:border-blue-500 rounded-xl bg-white">
       <Card className="py-0 shadow-lg hover:shadow-2xl transition-shadow duration-300 ease-in-out cursor-pointer">
         <Link href={`/property/${property.id}`} className="block w-full">
           <div>

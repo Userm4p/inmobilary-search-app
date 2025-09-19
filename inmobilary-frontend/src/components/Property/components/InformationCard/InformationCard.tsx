@@ -6,7 +6,7 @@ export const InformationCard = () => {
   const { property } = useContext(PropertyContext);
 
   return (
-    <div className="flex flex-col gap-4 p-6 justify-start items-start bg-stone-800 shadow-md w-full md:w-[604px] sm:w-[504px] xs:w-[360px] xxs:w-[350px] w-[300px] h-auto">
+    <div className="flex flex-col gap-4 p-6 justify-start items-start bg-stone-800 shadow-md w-full md:w-[604px] sm:w-[504px] xs:w-[360px] xxs:w-[350px] w-[300px] h-auto rounded-lg">
       <div className="w-full">
         <h1 className="text-3xl font-bold text-white text-nowrap">
           Price: {formatMoney(property?.price || 0)}

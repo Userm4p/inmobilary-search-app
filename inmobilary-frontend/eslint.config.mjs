@@ -19,6 +19,9 @@ const eslintConfig = [
       '@typescript-eslint/no-explicit-any': 'off',
     },
   },
+  {
+    ignores: ['src/__tests__/**'],
+  },
 ];
 
 export default eslintConfig;

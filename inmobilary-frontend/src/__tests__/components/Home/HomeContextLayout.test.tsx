@@ -3,16 +3,6 @@ import { useContext } from 'react';
 import { HomeContextLayout } from '@/components/Home/components/HomeContextLayout/HomeContextLayout';
 import { HomeContext } from '@/context/HomeContext';
 
-const mockContextValue = {
-  isLoading: false,
-  error: null,
-  properties: [],
-  getProperties: jest.fn(),
-  handleInputChange: jest.fn(),
-  searchFilters: {},
-  handleClearFilters: jest.fn(),
-};
-
 describe('HomeContextLayout', () => {
   it('should render children wrapped in HomeContext provider', () => {
     render(

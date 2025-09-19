@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { InformationCard } from '@/components/Property/components/InformationCard/InformationCard';
 import { PropertyContext } from '@/context/PropertyContext';
 

@@ -1,5 +1,6 @@
 import { renderHook, act } from '@testing-library/react';
 import { useProperty } from '@/hooks/useProperty';
+import { PropertyService } from '@/api/helpers/property.service';
 
 // Mock the PropertyService
 jest.mock('@/api/helpers/property.service', () => ({
@@ -38,8 +39,7 @@ describe('useProperty', () => {
     mockGetPropertyById.mockClear();
 
     // Mock the PropertyService constructor
-    const { PropertyService } = require('@/api/helpers/property.service');
-    PropertyService.mockImplementation(() => ({
+    (PropertyService as jest.Mock).mockImplementation(() => ({
       getPropertyById: mockGetPropertyById,
     }));
   });

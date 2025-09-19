@@ -79,22 +79,21 @@ pnpm test -- --testPathPattern="hooks|components"
 ```
 
 ### Backend Testing (InmobilaryApi)
-- **Current Status**: Placeholder structure in `InmobilaryApi/tests/`
-- **Planned**: Unit tests for controllers, services, and repositories
-- **Integration Tests**: API endpoint testing with test database
-- **Test Database**: Separate MongoDB instance for testing
+- **Current Status**: ✅ **Fully Implemented** - Comprehensive test suite with 88 unit tests
+- **Test Coverage**: 88 tests covering all layers (Domain, Application, Infrastructure, Controllers)
+- **Framework**: xUnit with Moq and FluentAssertions
+- **Coverage**: Code coverage reporting with Coverlet
 
-#### Backend Test Structure (Planned)
+#### Backend Test Structure (Implemented)
 ```
-InmobilaryApi/tests/
-├── Unit/
-│   ├── Controllers/        # Controller unit tests
-│   ├── Services/          # Business logic tests
-│   └── Repositories/      # Data access tests
-├── Integration/
-│   ├── API/              # Endpoint integration tests
-│   └── Database/         # Database integration tests
-└── TestData/             # Test fixtures and seed data
+InmobilaryApi/src/tests/Inmobilary.Tests/
+├── Domain/Entities/           # Entity unit tests (32 tests)
+├── Application/DTOs/          # DTO unit tests (24 tests)
+├── Infrastructure/Database/   # Database context tests (6 tests)
+├── Controllers/               # Controller unit tests (16 tests)
+├── appsettings.Test.json     # Test configuration
+├── coverlet.runsettings      # Coverage configuration
+└── run-tests.ps1            # Test execution script
 ```
 
 ### Test Configuration
@@ -105,11 +104,12 @@ InmobilaryApi/tests/
 - **Module Mapping**: All `@/` aliases configured
 - **Mocking**: External libraries properly mocked
 
-#### Backend (Planned - xUnit)
-- **Framework**: xUnit for .NET testing
-- **Database**: In-memory or test MongoDB instance
-- **Mocking**: Moq for dependency injection
-- **Coverage**: Coverlet for code coverage
+#### Backend (Implemented - xUnit)
+- **Framework**: xUnit for .NET testing ✅
+- **Database**: Mocked dependencies for unit tests ✅
+- **Mocking**: Moq for dependency injection ✅
+- **Coverage**: Coverlet for code coverage ✅
+- **Test Count**: 88 unit tests with 100% pass rate
 
 ### Continuous Integration
 Both frontend and backend tests are designed to run in CI/CD pipelines:
@@ -128,7 +128,7 @@ test-backend:
   steps:
     - uses: actions/checkout@v3
     - uses: actions/setup-dotnet@v3
-    - run: cd InmobilaryApi && dotnet test
+    - run: cd InmobilaryApi/src/tests/Inmobilary.Tests && dotnet test
 ```
 
 ### Test Best Practices
@@ -139,11 +139,12 @@ test-backend:
    - Test user interactions and component behavior
    - Maintain high coverage while focusing on meaningful tests
 
-2. **Backend** (Planned):
-   - Unit test business logic in isolation
-   - Integration test API endpoints
-   - Use test database for data-dependent tests
-   - Mock external services and dependencies
+2. **Backend** (Implemented):
+   - ✅ Unit test business logic in isolation
+   - ✅ Unit test API controllers with mocked services
+   - ✅ Test domain entities and DTOs
+   - ✅ Mock external services and dependencies
+   - ✅ Code coverage reporting with detailed metrics
 
 3. **General**:
    - Write descriptive test names

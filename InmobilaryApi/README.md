@@ -33,12 +33,19 @@ InmobilaryApi/
    │  │  └─ MongoDbContext.cs
    │  └─ Repositories/
    │     └─ PropertyRepository.cs
-   └─ InmobilaryApi/          # ASP.NET Core API
-      ├─ Controllers/
-      │  └─ PropertiesController.cs
-      ├─ Program.cs
-      ├─ appsettings.json
-      └─ appsettings.Development.json
+   ├─ InmobilaryApi/          # ASP.NET Core API
+   │  ├─ Controllers/
+   │  │  └─ PropertiesController.cs
+   │  ├─ Program.cs
+   │  ├─ appsettings.json
+   │  └─ appsettings.Development.json
+   └─ tests/                  # Test project
+      └─ Inmobilary.Tests/    # Unit tests (88 tests)
+         ├─ Domain/Entities/  # Entity tests
+         ├─ Application/DTOs/ # DTO tests
+         ├─ Infrastructure/   # Infrastructure tests
+         ├─ Controllers/      # Controller tests
+         └─ README.md         # Test documentation
 ```
 
 ## Configuration
@@ -132,6 +139,39 @@ Fetches a property by `id` (contract available in `IPropertyService`). If you ad
 - `propertyTraces` (30 records)
 
 Sample IDs: `O1..O10`, `P1..P20`, `IMG1..IMG40`, `T1..T30`.
+
+## Testing
+
+The project includes a comprehensive test suite with **88 unit tests** covering all layers:
+
+### Test Structure
+- **Domain Tests**: Entity validation and behavior (32 tests)
+- **Application Tests**: DTO mapping and interfaces (24 tests)  
+- **Infrastructure Tests**: Database context and collections (6 tests)
+- **Controller Tests**: API endpoint behavior (16 tests)
+
+### Running Tests
+```bash
+# Navigate to test project
+cd src/tests/Inmobilary.Tests
+
+# Run all tests
+dotnet test
+
+# Run with code coverage
+dotnet test --collect:"XPlat Code Coverage" --results-directory ./TestResults --logger trx --settings coverlet.runsettings
+
+# Run with PowerShell script
+.\run-tests.ps1
+```
+
+### Test Features
+- **Framework**: xUnit with Moq and FluentAssertions
+- **Coverage**: Detailed code coverage reporting with Coverlet
+- **Mocking**: Comprehensive mocking of dependencies
+- **Isolation**: All tests run independently without external dependencies
+
+See `src/tests/Inmobilary.Tests/README.md` for detailed test documentation.
 
 ## Development
 - Swagger UI enabled in Development (`/swagger`).

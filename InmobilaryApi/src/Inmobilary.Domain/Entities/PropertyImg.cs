@@ -13,5 +13,5 @@ public class PropertyImg
     [BsonRepresentation(BsonType.String)]
     public string PropertyId { get; set; } = string.Empty;
 
-    public string File { get; set; }
+    public required string File { get; set; }
 }

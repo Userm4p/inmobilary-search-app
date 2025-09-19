@@ -19,10 +19,23 @@ public class PropertiesController : ControllerBase
     public async Task<ActionResult<IEnumerable<PropertyDto>>> GetAll(
         [FromQuery] string? name,
         [FromQuery] string? address,
-        [FromQuery] decimal? minPrice,
-        [FromQuery] decimal? maxPrice)
+        [FromQuery] string? minPrice,
+        [FromQuery] string? maxPrice)
     {
         var properties = await _propertyService.GetPropertiesAsync(name, address, minPrice, maxPrice);
         return Ok(properties);
+    }
+
+    [HttpGet("{id}")]
+    public async Task<ActionResult<PropertyDto>> GetById(string id)
+    {
+        var property = await _propertyService.GetByIdAsync(id);
+        
+        if (property == null)
+        {
+            return NotFound($"No se encontró la propiedad con ID: {id}");
+        }
+        
+        return Ok(property);
     }
 }

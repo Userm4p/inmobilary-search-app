@@ -1,4 +1,4 @@
-using Infrastructure.Database;
+﻿using Infrastructure.Database;
 using Domain.Entities;
 using Application.DTOs;
 using Application.Interfaces;
@@ -16,7 +16,7 @@ public class PropertyRepository : IPropertyService
         _context = context;
     }
     public async Task<IEnumerable<PropertyDto>> GetPropertiesAsync(
-        string? name, string? address, decimal? minPrice, decimal? maxPrice)
+        string? name, string? address, string? minPrice, string? maxPrice)
     {
         var filterBuilder = Builders<Property>.Filter;
         var filter = filterBuilder.Empty;
@@ -27,13 +27,18 @@ public class PropertyRepository : IPropertyService
         if (!string.IsNullOrEmpty(address))
             filter &= filterBuilder.Regex(p => p.Address, new MongoDB.Bson.BsonRegularExpression(address, "i"));
 
-        if (minPrice.HasValue)
-            filter &= filterBuilder.Gte(p => p.Price, minPrice.Value);
-
-        if (maxPrice.HasValue)
-            filter &= filterBuilder.Lte(p => p.Price, maxPrice.Value);
-
         var properties = await _context.Properties.Find(filter).ToListAsync();
+        
+        if (!string.IsNullOrEmpty(minPrice) && decimal.TryParse(minPrice, out var minPriceValue))
+        {
+            properties = properties.Where(p => p.Price >= minPriceValue).ToList();
+        }
+
+        if (!string.IsNullOrEmpty(maxPrice) && decimal.TryParse(maxPrice, out var maxPriceValue))
+        {
+            properties = properties.Where(p => p.Price <= maxPriceValue).ToList();
+        }
+        
         var result = new List<PropertyDto>();
 
         foreach (var property in properties)

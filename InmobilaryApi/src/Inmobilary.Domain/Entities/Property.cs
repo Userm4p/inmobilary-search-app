@@ -11,8 +11,8 @@ public class Property
     public string Id { get; set; } = string.Empty;
 
     [BsonRepresentation(BsonType.String)]
-    public string OwnerId { get; set; }
+    public required string OwnerId { get; set; }
     public string Name { get; set; } = string.Empty;
-    public string Address { get; set; }
+    public required string Address { get; set; }
     public decimal Price { get; set; }
 }
